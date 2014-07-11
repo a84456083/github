@@ -9,25 +9,29 @@
   class MainAction extends CI_Controller{
          public function index(){
          	   $data=array();
-         	   $this->load->helper('url');
-         	   $this->load->model("dbModel");
                $data['bigObject']=$this->dbModel->getBigObject();
          	   $this->load->view('head',$data);
                $this->load->view('travelMain',$data);
 
          }
 
-
-         public function forward(){
-         	$this->load->helper('url');
-         	$this->load->model("dbModel");
-         	$this->dbModel->forward($_GET['id']);
-            $data['bigObject']=$this->dbModel->getBigObject();
-         	$this->load->view('head',$data);
-            $this->load->view('travelMain',$data);
-
+         public function contain(){
+         	   $data=array();
+         	   $this->load->view('head',$data);
+               $this->load->view('contain',$data);
 
          }
+
+         public function forward(){
+         	$this->dbModel->forward($_GET['id']);
+            redirect('mainAction');
+         }
+
+         public function back(){
+         	$this->dbModel->back($_GET['id']);
+            redirect('mainAction');
+         }
+
   }
 
 ?>

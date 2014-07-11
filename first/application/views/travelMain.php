@@ -6,10 +6,10 @@
 	<title>我的旅遊世界</title>
 
 	<style type="text/css">
-	.big-td{width:310px}
-    .big-td img{width:300px}
+	.big-td{width:300px}
+    .big-td img{width:290px}
     .center{margin:1% auto;text-align:center;}
-    .min-td img{height:100px ; width:150px}
+    .min-td img{height:80px ; width:120px}
     .min-td{  width:160px}
     .mask div {
             filter: alpha(opacity=60);
@@ -25,11 +25,9 @@
 
 	</script>
 </head>
-<body>
+<body style="background-color:#BBB">
 
 
-
-<h1>我的旅遊世界</h1>
 <div >
   <table class="center"  >
   <?php
@@ -52,13 +50,13 @@
       $number=  $i*3+ (2-$j);
      if($number-$i*3<$columNum){
     ?>
-      <td class="big-td">
+      <td class="big-td"><a href="mainAction/contain">
       <div class="row
       <?php if($bigObject[$number]['end']==0) echo 'mask';?>
       ">
        <div class="col-lg-span">
          <div class="thumbnail">
-          <img src="images/t_1_1.jpg" alt="...">
+          <img src="<?=$bigObject[$number]['path']?>" alt="...">
            <div class="caption">
              <h3><?=$bigObject[$number]['object_name']?></h3>
               <p>
@@ -66,7 +64,7 @@
               <a href="mainAction/forward?id=<?=$bigObject[$number]['id']?>" class="btn-sm btn-primary" role="button">前进</a>
               <?php } ?>
               <?php if( !($i==0&&$j==0) ){ ?>
-              <a href="#" class="btn-sm btn-default" role="button">后退</a>
+              <a href="mainAction/back?id=<?=$bigObject[$number]['id']?>" class="btn-sm btn-default" role="button">后退</a>
               <?php } ?>
               <a href="#" class="btn-sm btn-warning" role="button">修改</a>
                <?php if($bigObject[$number]['end']==0){ ?>
@@ -77,6 +75,7 @@
          </div>
       </div>
      </div>
+     </a>
       </td>
     <?php
     }
