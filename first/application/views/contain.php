@@ -8,13 +8,21 @@
      li{list-style-type:none;}
 	</style>
     <link rel="stylesheet" href="css/basic.css">
+
 	<script src="js/lightbox.js"></script>
 	<link rel="stylesheet" href="css/lightbox.css">
 	<link rel="stylesheet" href="css/hover.css">
     <script type="text/javascript" src="js/jquery.wookmark.js"></script>
 
+    <script type="text/javascript" src="js/jHtmlArea-0.8.min.js">
+
+    </script>
+    <link rel="stylesheet" href="css/jHtmlArea.css" type="text/css"   />
      <script language="JavaScript" type="text/javascript" >
+
+
   $(document).ready(function() {
+
 
         var $handler = $('#imgsplay li');
 
@@ -26,28 +34,70 @@
             itemWidth: 180,
             align :'left'
         });
+
+
+
+	$("#edit").click(function() {
+		$("#showContent").css("display","none");
+		$(this).css("display","none");
+        $(".content").htmlarea({
+        toolbar: [
+        ["bold", "italic", "underline"],
+        ["h1", "h2", "h3", "h4", "h5", "h6"],
+        ["link", "unlink", "image"]
+        ]
+        });
+	});
+
 });
 
 	</script>
+
+	<style type="text/css">
+      .uEditor{
+      	width:99%;float:right;display:inline-block;height:800px
+      }
+      .mycontainer{padding:2px;margin-left:4%}
+
+      .h1,.h2,.h3,.h4,.h5,.h6{
+      	margin: 0 0 !important
+      }
+
+    </style>
+
+
+
 </head>
 <body style="background-color:#BBB">
-
-		<div class="container">
-
+		<div style="padding:5px;margin-left:4%">
+          <button class="btn" onClick="javascript:document.location.reload()">刷新</button>
+          <button class="btn" >上传图片</button>
+        </div>
+		<div class="mycontainer">
 			<div class="image-row" style="width:50%;display:inline-block;position:relative;" >
 				<div class="image-set"  >
 				 <ul id="imgsplay">
-					<li><a class="example-image-link" href="images/demopage/image-3.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img width="180" class="example-image img-rounded shrink" src="images/demopage/thumb-3.jpg" alt=""/></a></li>
-					<li><a class="example-image-link" href="images/demopage/image-4.jpg" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard."><img width="180" class="example-image img-rounded shrink" src="images/demopage/thumb-4.jpg" alt="" /></a></li>
-					<li><a class="example-image-link" href="images/demopage/image-5.jpg" data-lightbox="example-set" data-title="The next image in the set is preloaded as you're viewing."><img width="180" class="example-image img-rounded shrink" src="images/demopage/thumb-5.jpg" alt="" /></a></li>
-					<li><a class="example-image-link" href="images/demopage/image-6.jpg" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close."><img width="180" class="example-image img-rounded shrink" src="images/demopage/thumb-6.jpg" alt="" /></a></li>
+				    <?php
+				    for($i=0;$i<count($photo['photo']);$i++){
+				    ?>
+					<li><a class="example-image-link" href="<?=$photo['photo'][$i]['path']?>" data-lightbox="example-set" data-title="<?=$photo['photo'][$i]['photo_name']?>"><img width="180" class="example-image shrink" src="<?=$photo['photo'][$i]['smallpath']?>" alt=""/></a></li>
+				    <?php
+				    }
+				    ?>
 				</ul>
 				</div>
 			</div>
 
 
-	 <div style="width:45%;float:right;display:inline-block" >
-    <textarea style="width:99%;height:800px" class="uEditorCustom" name="textarea"><strong><em>uEditor</em> rocks !</strong></textarea>
+	 <div style="width:45%;float:left;display:inline-block" >
+	 <form action="mainAction/htmlContent" method="post">
+	  <input name="id" value="<?=$id?>" type="hidden" />
+	  <div id="showContent" style="width:99%;height:700px;background-color:#FFF"><?=$photo['content'][0]['content']?></div>
+      <textarea id="content" style="display:none;width:45%;height:700px;" class="content" name="content" readonly><?=$photo['content'][0]['content']?></textarea>
+       <a id="edit" class="btn btn-primary">编辑</a>
+      <button id="submit" class="btn btn-primary">确定</button>
+      <form>
+
     </div>
 
 		</div>

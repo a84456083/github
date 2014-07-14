@@ -25,7 +25,7 @@
 
 	</script>
 </head>
-<body style="background-color:#BBB">
+<body style="background-color:#CCC">
 
 
 <div >
@@ -50,7 +50,7 @@
       $number=  $i*3+ (2-$j);
      if($number-$i*3<$columNum){
     ?>
-      <td class="big-td"><a href="mainAction/contain">
+      <td class="big-td"><a href="mainAction/contain?id=<?=$bigObject[$number]['id']?>">
       <div class="row
       <?php if($bigObject[$number]['end']==0) echo 'mask';?>
       ">

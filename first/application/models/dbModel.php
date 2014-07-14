@@ -29,6 +29,17 @@
         $this->db->update('bigobject', array('number'=>$number[0]['number']-1), "id = $id");
     }
 
+    public function getPhoto($id){
+    	$this->load->database();
+       	$data['photo']=$this->db->query("select * from photo where pk_bigobject=? order by number",array($id))->result_array();
+       	$data['content'] =$this->db->query("select content from bigobject where id=?",array($id))->result_array();
+       	return $data;
+    }
+
+    public function saveContent($id,$content){
+    	$this->load->database();
+        $this->db->update('bigobject', array('content'=>$content), array('id'=>$id));
+    }
 
 
  }
