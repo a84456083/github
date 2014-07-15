@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2014-07-14 17:40:10
+Date: 2014-07-15 17:29:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -47,19 +47,21 @@ CREATE TABLE `photo` (
   `photo_name` varchar(255) DEFAULT NULL,
   `path` varchar(255) DEFAULT NULL,
   `pk_bigobject` int(11) DEFAULT NULL,
-  `number` int(11) DEFAULT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `smallpath` varchar(255) DEFAULT NULL,
+  `number` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
 
 -- ----------------------------
 -- Records of photo
 -- ----------------------------
-INSERT INTO `photo` VALUES ('1', 'test1', 'images/private/t_1_1.jpg', '1', '1', 'images/private/small/t_1_1.png');
-INSERT INTO `photo` VALUES ('2', 'test2', 'images/private/t_4_1.jpg', '2', '1', 'images/private/small/t_4_1.png');
-INSERT INTO `photo` VALUES ('3', 'test3', 'images/private/t_3_1.jpg', '3', '1', 'images/private/small/t_3_1.png');
-INSERT INTO `photo` VALUES ('4', 'test4', 'images/private/t_2_1.jpg', '4', '1', 'images/private/small/t_2_1.png');
-INSERT INTO `photo` VALUES ('5', 'test5', 'images/demopage/image-1.jpg', '3', '2', 'images/demopage/thumb-1.jpg');
-INSERT INTO `photo` VALUES ('6', 'test6', 'images/demopage/image-2.jpg', '3', '3', 'images/demopage/thumb-2.jpg');
-INSERT INTO `photo` VALUES ('7', 'test7', 'images/demopage/image-3.jpg', '3', '4', 'images/demopage/thumb-3.jpg');
-INSERT INTO `photo` VALUES ('8', 'test8', 'images/demopage/image-4.jpg', '3', '5', 'images/demopage/thumb-4.jpg');
+INSERT INTO `photo` VALUES ('0', '123123', 'images/private/a6a9398480d6d4f5e85463779e2baf6f.jpg', '3', '2014-07-15 10:48:17', 'images/private/a6a9398480d6d4f5e85463779e2baf6f.jpg', null);
+INSERT INTO `photo` VALUES ('1', 'test1', 'images/private/t_1_1.jpg', '1', '2014-07-15 12:10:48', 'images/private/small/t_1_1.png', '1');
+INSERT INTO `photo` VALUES ('2', 'test2', 'images/private/t_4_1.jpg', '2', '2014-07-15 12:10:49', 'images/private/small/t_4_1.png', '1');
+INSERT INTO `photo` VALUES ('3', 'test3', 'images/private/t_3_1.jpg', '3', '2014-07-15 12:10:49', 'images/private/small/t_3_1.png', '1');
+INSERT INTO `photo` VALUES ('4', 'test4', 'images/private/t_2_1.jpg', '4', '2014-07-15 12:11:22', 'images/private/small/t_2_1.png', '1');
+INSERT INTO `photo` VALUES ('5', 'test5', 'images/demopage/image-1.jpg', '3', '2014-07-15 11:22:37', 'images/demopage/thumb-1.jpg', null);
+INSERT INTO `photo` VALUES ('6', 'test6', 'images/demopage/image-2.jpg', '3', '2014-07-15 11:22:43', 'images/demopage/thumb-2.jpg', null);
+INSERT INTO `photo` VALUES ('7', 'test7', 'images/demopage/image-3.jpg', '3', '2014-07-15 11:22:47', 'images/demopage/thumb-3.jpg', null);
+INSERT INTO `photo` VALUES ('8', 'test8', 'images/demopage/image-4.jpg', '3', '2014-07-15 11:22:51', 'images/demopage/thumb-4.jpg', null);

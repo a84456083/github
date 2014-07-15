@@ -31,7 +31,7 @@
 
     public function getPhoto($id){
     	$this->load->database();
-       	$data['photo']=$this->db->query("select * from photo where pk_bigobject=? order by number",array($id))->result_array();
+       	$data['photo']=$this->db->query("select * from photo where pk_bigobject=? order by date",array($id))->result_array();
        	$data['content'] =$this->db->query("select content from bigobject where id=?",array($id))->result_array();
        	return $data;
     }
@@ -41,7 +41,10 @@
         $this->db->update('bigobject', array('content'=>$content), array('id'=>$id));
     }
 
-
+    public function savePhoto($id,$imgPath,$imgSmallPath,$photoName){
+    	$this->load->database();
+        $this->db->insert('photo',array('photo_name'=>$photoName,'path'=>$imgPath,'smallpath'=>$imgSmallPath,'date'=>date('Y-m-d H:i:s',time()),'pk_bigobject'=>$id));
+    }
  }
 
 

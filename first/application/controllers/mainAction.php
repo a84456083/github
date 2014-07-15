@@ -40,6 +40,34 @@
            redirect(URLPATH.'mainAction/contain?id='.$_POST['id']);
 
          }
+
+
+         public function uploadImg(){
+
+
+         	$uid=md5(time() . mt_rand(1,1000000));
+         	move_uploaded_file( $_FILES['file']['tmp_name'],'images/private/'.$uid.'.jpg');
+         	$filename = 'images/private/'.$uid.'.jpg';
+            // 获取图片的宽高
+            list($width, $height) = getimagesize($filename);
+            $percent = 300 / $width ;
+            $newwidth = $width * $percent;
+            $newheight = $height * $percent;
+            // 创建一个图片。接收参数分别为宽高，返回生成的资源句柄
+            $thumb = imagecreatetruecolor($newwidth, $newheight);
+            //获取源文件资源句柄。接收参数为图片路径，返回句柄
+            $source = imagecreatefromjpeg($filename);
+            // 将源文件剪切全部域并缩小放到目标图片上。前两个为资源句柄
+            imagecopyresampled($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+            imagejpeg($thumb,'images/private/small/'.$uid.'.jpg');
+
+            $this->dbModel->savePhoto($_POST['id'],'images/private/'.$uid.'.jpg','images/private/'.$uid.'.jpg',$_POST['photoName']);
+
+         }
+
+
+
+
   }
 
 ?>
