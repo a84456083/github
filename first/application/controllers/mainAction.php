@@ -62,11 +62,14 @@
             imagejpeg($thumb,'images/private/small/'.$uid.'.jpg');
 
             $this->dbModel->savePhoto($_POST['id'],'images/private/'.$uid.'.jpg','images/private/'.$uid.'.jpg',$_POST['photoName']);
-
+            echo '<script>parent.document.location.reload()</script>';
          }
 
 
-
+         public function cv(){
+         	   $this->load->view('head');
+               $this->load->view('cv');
+         }
 
   }
 

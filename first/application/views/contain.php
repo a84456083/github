@@ -110,18 +110,18 @@
 
       <div class="modal-body">
 
-<iframe style="display:none" id="upload">
 
-</iframe>
 
-<form id='uploadform' action="mainAction/uploadImg" method="post" enctype='multipart/form-data' targe="upload">
+<form id='uploadform' action="mainAction/uploadImg" method="post" enctype='multipart/form-data' target="upload">
      <p>名字/简述</p>
      <input type="text" name="photoName" />
      <input type="file" name="file" />
      <input type="hidden" name="id"  value="<?=$id?>"/>
-     <input type="submit" class="btn btn-primary" value="確定"/>
+     <input type="submit" class="btn btn-primary" value="確定" />
  </form>
+<iframe style="display:none" name="upload">
 
+</iframe>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
