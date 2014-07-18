@@ -1,0 +1,51 @@
+@charset "UTF-8";
+/* CSS Document */
+
+a{
+    color:#000
+}
+a:hover{
+    text-decoration:none;
+}
+
+.col-lg-span {
+    background: #ffffff;
+    background: rgba(255,255,255,0.5) !important;
+    -webkit-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+    cursor: pointer;
+
+    margin:2% 3% !important;
+    padding:10px !important;
+    border-radius: 10px;
+
+}
+.col-lg-span>div:HOVER {
+    background: rgba(255,255,255,1) !important;
+    box-shadow: 0 0 20px rgba(0,0,0,0.25);
+}
+
+.col-lg-span p {
+    width: 100%;
+    clear: both;
+    text-align: center;
+}
+.col-lg-span a.series {
+    font-size: 15px;
+}
+.col-lg-span a.title {
+    font-size: 18px;
+    font-weight:900;
+}
+.col-lg-span p.price {
+    font-size: 20px !important;
+    color: #9e6901 !important;
+}
+.col-lg-span p.price span.price-pre {
+    margin-left: 30px;
+    font-size: 15px;
+    color: #888888;
+    text-decoration: line-through;
+}
